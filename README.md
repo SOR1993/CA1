@@ -167,13 +167,10 @@ pivot.corr()
 ## https://sparkbyexamples.com/pandas/pandas-correlation-of-columns/#:~:text=You%20can%20also%20get%20the,()%20function%20returns%20Pearson's%20correlation.
 
 ## dropped the other variables and just conducted a comparison vs. population to quickly identify where the strong/weak relationships existed in the data set
-
 pivot[pivot.columns[1:]].corr()['Population'][:].sort_values(ascending=False).to_frame()
 
 ## https://stackoverflow.com/questions/39409866/correlation-heatmap
-
 ## used seaborn to plot a heatmap of the correlation analysis to allow me to identify key relationships in the data.
-
 corr = pivot.corr()
 sns.heatmap(corr, cmap="Blues", annot=True)
 plt.title("Correlations of Factors Effecting Population in Ireland", fontsize=18, loc="center")
@@ -193,7 +190,6 @@ chart1.head()
 chart1.head()
 
 ## created a new dataframe chart1 to compare variables which I identified as having a relationship of interest from the correlation analysis
-
 chart1=chart1.drop(columns=['Annual births', 'Annual deaths', 'Natural increase', 'Population'])
 
 chart1.head()
@@ -203,7 +199,6 @@ chart1=chart1.drop(columns=['Population'])
 chart1.head()
 
 ## creating a line chart to analyse the relationships between variables
-
 sns.relplot(data=chart1, kind="line", height=8, linestyle = "--")
 
 plt.grid(True, color = "grey", linewidth = "1", linestyle = "-")
@@ -219,8 +214,6 @@ chart2 = df_new.pivot(index='Year', columns='Category', values='Number of People
 chart2.head()
 
 ## created a new dataframe chart2 to compare variables which I identified as having a relationship of interest from the correlation analysis
-
-
 chart2=chart2.drop(columns=['Emigrants', 'Immigrants', 'Population', 'Net migration'])
 
 chart2.head()
@@ -247,4 +240,22 @@ plt.title("Factors Effecting Population Change in Ireland 1987-2023", fontsize=1
 plt.xlabel("Year", fontsize=12)
 plt.ylabel("Number of People (thousand)", fontsize=12)
 
+# Statistical Analysis
+## general description of the data
+df1.describe()
+
+## correlation analysis of the data
+df1.corr()
+
+## dataset 2 decriptive statistics
+pivot.describe()
+
+## dataset 2correlation analysis of the data
+pivot.corr()
+
+## Use of a pairplot to plot variables against each other. Source: https://seaborn.pydata.org/examples/scatterplot_matrix.html
+
+sns.pairplot(pivot)
+
+sns.pairplot(df1)
 
