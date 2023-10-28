@@ -253,9 +253,113 @@ pivot.describe()
 ## dataset 2correlation analysis of the data
 pivot.corr()
 
-## Use of a pairplot to plot variables against each other. Source: https://seaborn.pydata.org/examples/scatterplot_matrix.html
+## https://seaborn.pydata.org/examples/scatterplot_matrix.html
 
 sns.pairplot(pivot)
+plt.grid(True, color = "grey", linewidth = "1", linestyle = "-") ## Source https://www.geeksforgeeks.org/grids-in-matplotlib/
+plt.title("Graphs of Various Variables Effecting the Population of Ireland", fontsize=14)
+sns.displot(kind='kde', data=pivot, x='Population')
+plt.grid(True, color = "grey", linewidth = "1", linestyle = "-") ## Source https://www.geeksforgeeks.org/grids-in-matplotlib/
+plt.title("Graph Showing the Kernel Density of the Population of Ireland", fontsize=14)
+plt.xlabel("Population", fontsize=12)
+plt.ylabel("Density", fontsize=12)
 
-sns.pairplot(df1)
+## Poisson Distribution- import poisson
+from scipy.stats import poisson
 
+## P(X=65,000) Number of Immigrants equal to 65,000 in a given year
+poisson.pmf(k = 65, mu = 65.405405)
+
+## Source: https://www.tutorialspoint.com/how-to-create-a-poisson-probability-mass-function-plot-in-python
+lam = 65.405405
+# Create an array of x values
+x = np.arange(50, 100).tolist()
+# Create the Poisson probability mass function
+pmf = poisson.pmf(x, lam)
+# Create the plot
+plt.plot(x, pmf, 'bo', ms=8)
+plt.vlines(x, 0, pmf, colors='b', lw=5)
+plt.title('Poisson Probability Mass Function- Number of Immigrants')
+plt.xlabel('Number of People (thousand)')
+plt.ylabel('Probability')
+plt.show()
+
+## P(X < 65,000) Probability of the number of immigrants being less than 65,000 in a given year
+poisson.cdf(k = 65, mu = 65.405405)
+## Source: https://www.tutorialspoint.com/how-to-create-a-poisson-probability-mass-function-plot-in-python
+lam = 65.405405
+# Create an array of x values
+x = np.arange(50, 100).tolist()
+# Create the Poisson probability mass function
+cdf= poisson.cdf(x, lam)
+# Create the plot
+plt.plot(x, cdf, 'bo', ms=8)
+plt.vlines(x, 0, cdf, colors='b', lw=5)
+plt.title('Culmulative Distribution Function- Number of Immigrants')
+plt.xlabel('Number of People (thousand)')
+plt.ylabel('Probability')
+plt.show()
+
+## P(X > 65,000) Probability of the number of immigrants being greater than 65,000 in a given year
+poisson.sf(k = 65, mu = 65.405405)
+## Source: https://www.tutorialspoint.com/how-to-create-a-poisson-probability-mass-function-plot-in-python
+lam = 65.405405
+# Create an array of x values
+x = np.arange(50, 100).tolist()
+# Create the Poisson probability mass function
+sf = poisson.sf(x, lam)
+# Create the plot
+plt.plot(x, sf, 'bo', ms=8)
+plt.vlines(x, 0, sf, colors='b', lw=5)
+plt.title('Survival Function- Number of Immigrants')
+plt.xlabel('Number of People (thousand)')
+plt.ylabel('Probability')
+plt.show()
+
+## P(X=4,206,000) Population of Ireland being equal to 4,206,000 in a given year
+poisson.pmf(k = 4000, mu = 4206.608108)
+## Source: https://www.tutorialspoint.com/how-to-create-a-poisson-probability-mass-function-plot-in-python
+lam = 4206.608108
+# Create an array of x values
+x = np.arange(3500, 4500).tolist()
+# Create the Poisson probability mass function
+pmf = poisson.pmf(x, lam)
+# Create the plot
+plt.plot(x, pmf, 'g', ms=8)
+plt.vlines(x, 0, pmf, colors='g', lw=5)
+plt.title('Poisson Probability Mass Function- Population of Ireland')
+plt.xlabel('Number of People (thousand)')
+plt.ylabel('Probability')
+plt.show()
+
+## P(X < 4,206,000) Probability of the population of Ireland being less than 4,206,000 in a given year
+poisson.cdf(k = 4206, mu = 4206.608108)
+## Source: https://www.tutorialspoint.com/how-to-create-a-poisson-probability-mass-function-plot-in-python
+lam = 4206.608108
+# Create an array of x values
+x = np.arange(3500, 4500).tolist()
+# Create the Poisson probability mass function
+cdf= poisson.cdf(x, lam)
+# Create the plot
+plt.plot(x, cdf, 'g', ms=8)
+plt.vlines(x, 0, cdf, colors='g', lw=5)
+plt.title('Culmulative Distribution Function- Population of Ireland')
+plt.xlabel('Number of People (thousand)')
+plt.ylabel('Probability')
+plt.show()
+
+## P(X > 4,206,000) Probability of the population of Ireland being greater than 4,206,000 in a given year
+poisson.sf(k = 4206, mu = 4206.608108)
+## Source: https://www.tutorialspoint.com/how-to-create-a-poisson-probability-mass-function-plot-in-python
+lam = 4206.608108
+# Create an array of x values
+x = np.arange(3500, 4500).tolist()
+# Create the Poisson probability mass function
+sf = poisson.sf(x, lam)
+# Create the plot
+plt.plot(x, sf, 'g', ms=8)
+plt.vlines(x, 0, sf, colors='g', lw=5)
+plt.title('Survival Function- Population of Ireland')
+plt.xlabel('Number of People (thousand)')
+plt.ylabel('Probability')
+plt.show()
