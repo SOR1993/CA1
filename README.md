@@ -363,3 +363,111 @@ plt.title('Survival Function- Population of Ireland')
 plt.xlabel('Number of People (thousand)')
 plt.ylabel('Probability')
 plt.show()
+
+## Normal Distribution of Population Data
+## Testing the distribution for the probability of the number of immigrants being 100,000.
+
+## mu = 65.405405
+## sigma = 32.716840
+from scipy.stats import norm
+
+## calculate the Z value using the standardisation equation: Z = (x-mu)/std_dev
+mean = 65.405405
+std_dev = 32.716840
+x = 100
+z= (x-mean)/std_dev
+z
+
+## obtaining the probability 
+norm.pdf(100, mean, std_dev)
+
+## plotting using a standard normal distribution Source: https://peterstatistics.com/CrashCourse/Distributions/Normal.html
+x = np.arange(-4, 4, 0.001)
+leftTail = np.arange(-4, z, 0.001)
+plt.plot(x, norm.pdf(x))
+plt.fill_between(leftTail, norm.pdf(leftTail), color='red')
+plt.title("Graph Showing the Normal Distribution of the Number of Immigrants that Entered Ireland 1987-2023", fontsize=14)
+plt.xlabel("Z Value", fontsize=12)
+plt.ylabel("Probability", fontsize=12)
+plt.grid(True, color = "grey", linewidth = "1", linestyle = "-")
+plt.show()
+
+## Testing the distribution for the probability of the number of immigrants being 35,000.
+
+## mu = 65.405405
+## sigma = 32.716840
+
+## calculate the Z value using the standardisation equation: Z = (x-mu)/std_dev
+mean = 65.405405
+std_dev = 32.716840
+x = 35
+z= (x-mean)/std_dev
+z
+
+## obtaining the probability 
+norm.pdf(35, mean, std_dev)
+
+## plotting using a standard normal distribution Source: https://peterstatistics.com/CrashCourse/Distributions/Normal.html
+x = np.arange(-4, 4, 0.001)
+leftTail = np.arange(-4, z, 0.001)
+plt.plot(x, norm.pdf(x))
+plt.fill_between(leftTail, norm.pdf(leftTail), color='red')
+plt.title("Graph Showing the Normal Distribution of the Number of Immigrants that Entered Ireland 1987-2023", fontsize=14)
+plt.xlabel("Z Value", fontsize=12)
+plt.ylabel("Probability", fontsize=12)
+plt.grid(True, color = "grey", linewidth = "1", linestyle = "-")
+plt.show()
+
+## Testing the distribution for the probability of population of Ireland being 3,500,000 
+
+## mu = 4206.608108
+## sigma = 575.151783
+from scipy.stats import norm
+
+## calculate the Z value using the standardisation equation: Z = (x-mu)/std_dev
+mean = 4206.608108
+std_dev = 575.151783
+x = 3500
+z= (x-mean)/std_dev
+z
+
+## obtaining the probability 
+norm.cdf(3500, mean, std_dev)
+
+## plotting using a standard normal distribution Source: https://peterstatistics.com/CrashCourse/Distributions/Normal.html
+x = np.arange(-4, 4, 0.001)
+leftTail = np.arange(-4, z, 0.001)
+plt.plot(x, norm.pdf(x))
+plt.fill_between(leftTail, norm.pdf(leftTail), color='red')
+plt.title("Graph Showing the Normal Distribution of the Population of Ireland", fontsize=14)
+plt.xlabel("Z Value", fontsize=12)
+plt.ylabel("Probability", fontsize=12)
+plt.grid(True, color = "grey", linewidth = "1", linestyle = "-")
+plt.show()
+
+## Testing the distribution for the probability of population of Ireland being 5,500,000 
+
+## mu = 4206.608108
+## sigma = 575.151783
+from scipy.stats import norm
+
+## calculate the Z value using the standardisation equation: Z = (x-mu)/std_dev
+mean = 4206.608108
+std_dev = 575.151783
+x = 5500
+z= (x-mean)/std_dev
+z
+
+## obtaining the probability 
+norm.cdf(5500, mean, std_dev)
+
+## plotting using a standard normal distribution Source: https://peterstatistics.com/CrashCourse/Distributions/Normal.html
+x = np.arange(-4, 4, 0.001)
+leftTail = np.arange(-4, z, 0.001)
+plt.plot(x, norm.pdf(x))
+plt.fill_between(leftTail, norm.pdf(leftTail), color='red')
+plt.title("Graph Showing the Normal Distribution of the Population of Ireland", fontsize=14)
+plt.xlabel("Z Value", fontsize=12)
+plt.ylabel("Probability", fontsize=12)
+plt.grid(True, color = "grey", linewidth = "1", linestyle = "-")
+plt.show()
