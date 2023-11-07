@@ -398,6 +398,33 @@ plt.grid(True, color = "grey", linewidth = "1", linestyle = "-")
 plt.show()
 
 ## Machine Learning
+## Linear Regression- Multiple Variables
+pivot.head()
+
+# Extract the features (X) and target (y)
+X = pivot[['Annual births', 'Annual deaths', 'Emigrants', 'Immigrants', 'Natural increase', 'Net migration']].values
+y = pivot[['Population change']].values
+
+# Display independent and dependent variables
+print(X.shape, y.shape)
+
+# import the libraries for LinearRegression
+from sklearn.model_selection import train_test_split
+
+# Call the train_test_split method to split the data and the splitting is 70% for training and 30% for testing
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.3, random_state = 98)
+
+x.shape, y.shape, x_train.shape, x_test.shape, y_train.shape, y_test.shape
+
+from sklearn.linear_model import LinearRegression
+
+# Train the LinearRegression mode by using a method fit() function/ method
+regression = LinearRegression().fit(x_train, y_train)
+
+print("Training set score: {:.2f}".format(regression.score(x_train, y_train)))
+print("Test set score: {:.2f}".format(regression.score(x_test, y_test)))
+
+## Regression Model- Two Variables
 # Load the relevant libraries
 import pandas
 import seaborn as sns
@@ -434,3 +461,5 @@ print("Test set R^2 score: {:.2f}".format(reg_obj.score(x, y)))
 mean_squared_error = np.mean((predicted_population_change - y)**2)
 # Display the mean square error
 print("Mean Squared Error on test set", mean_squared_error)
+
+
