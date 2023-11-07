@@ -424,6 +424,21 @@ regression = LinearRegression().fit(x_train, y_train)
 print("Training set score: {:.2f}".format(regression.score(x_train, y_train)))
 print("Test set score: {:.2f}".format(regression.score(x_test, y_test)))
 
+# predict the effect on Population change given 50,000 immigrants enter Ireland
+regression_predict = regression.predict([[50]])
+print("Predicted Population Change : ")
+print(regression_predict)
+
+# predict the effect on Population change given 100,000 immigrants enter Ireland
+regression_predict = regression.predict([[100]])
+print("Predicted Population Change : ")
+print(regression_predict)
+
+# Calculate the mean square error
+mean_squared_error = np.mean((regression_predict - y)**2)
+# Display the mean square error
+print("Mean Squared Error on test set", mean_squared_error)
+
 ## Regression Model- Two Variables
 # Load the relevant libraries
 import pandas
@@ -507,6 +522,18 @@ model_ridge = ridge.fit(x_train, y_train)
 model_ridge.coef_
 print("Training set score: {:.2f}".format(model_ridge.score(x_train, y_train)))
 print("Test set score: {:.2f}".format(model_ridge.score(x_test, y_test)))
+# predict the effect on Population change given 50,000 immigrants enter Ireland
+ridge_predict = ridge.predict([[50]])
+print("Predicted Population Change : ")
+print(ridge_predict)
+# predict the effect on Population change given 100,000 immigrants enter Ireland
+ridge_predict = ridge.predict([[100]])
+print("Predicted Population Change : ")
+print(ridge_predict)
+# Calculate the mean square error
+mean_squared_error = np.mean((ridge_predict - y)**2)
+# Display the mean square error
+print("Mean Squared Error on test set", mean_squared_error)
 
 # kNN Regressor
 from sklearn.neighbors import KNeighborsRegressor
