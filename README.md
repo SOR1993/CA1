@@ -396,3 +396,41 @@ plt.xlabel("Z Value", fontsize=12)
 plt.ylabel("Probability", fontsize=12)
 plt.grid(True, color = "grey", linewidth = "1", linestyle = "-")
 plt.show()
+
+## Machine Learning
+# Load the relevant libraries
+import pandas
+import seaborn as sns
+from sklearn import linear_model
+from sklearn.metrics import r2_score
+import numpy as np
+
+import warnings
+warnings.filterwarnings('ignore') # Surpress the warnings
+
+chart1.head()
+x = chart1[['Population change']]
+y = chart1[['Immigrants']]
+
+sns.scatterplot(x=chart1['Population change'], y=chart1['Immigrants'] )
+
+# create the regression model object and fit the data into it
+reg_obj = linear_model.LinearRegression()
+
+# Train the model by calling fit() method
+reg_obj.fit(x,y)
+
+# predict the speed at 20:00 hours in the evening and with 750 users online
+predicted_population_change = reg_obj.predict([[50]])
+print("Predicted Population Change : ")
+print(predicted_population_change)
+
+# Display the coefficients
+print(reg_obj.coef_)
+
+# Calculate R^2 score for Linear Regression
+print("Test set R^2 score: {:.2f}".format(reg_obj.score(x, y)))
+# Calculate the mean square error
+mean_squared_error = np.mean((predicted_population_change - y)**2)
+# Display the mean square error
+print("Mean Squared Error on test set", mean_squared_error)
