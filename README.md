@@ -508,5 +508,41 @@ model_ridge.coef_
 print("Training set score: {:.2f}".format(model_ridge.score(x_train, y_train)))
 print("Test set score: {:.2f}".format(model_ridge.score(x_test, y_test)))
 
+# kNN Regressor
+from sklearn.neighbors import KNeighborsRegressor
+sns.scatterplot(x=chart1['Immigrants'], y=chart1['Population change'] )
+# Create the independent and dependent variables
+x = chart1[['Immigrants']]
+y = chart1[['Population change']]
 
+# Declare arrays to store training and test accuracies
+neighbors = np.arange(1, 9)
+train_accuracy =np.empty(len(neighbors))
+test_accuracy = np.empty(len(neighbors))
+for i, k in enumerate(neighbors):
+    # Declare and initialise kNN regressor with k neighbors
+    kNN = KNeighborsRegressor(n_neighbors = k)
+    # Call the method fit() to train the model
+    kNN.fit(x_train, y_train)
+    # Compute accuracy on the training set
+    train_accuracy[i] = kNN.score(x_train, y_train)
+    # Compute accuracy on the test set
+    test_accuracy[i] = kNN.score(x_test, y_test) 
+
+    # Visualise the accuracy based on the number of neighbors
+plt.title('kNN considering different neighbors')
+plt.plot(neighbors, test_accuracy, label = 'Testing Accuracy')
+plt.plot(neighbors, train_accuracy, label = 'Training Accuracy')
+plt.legend()
+plt.xlabel('Number of Neighbors')
+plt.ylabel('Accuracy')
+plt.show()
+print("Training set score: {:.2f}".format(kNN.score(x_train, y_train)))
+
+#predict the population change given the number of immigrants entering Ireland is 50,000 in a given year
+print(kNN.predict([[50]]))
+print("Test set score: {:.2f}".format(kNN.score(x_test, y_test)))
+
+#predict the population change given the number of immigrants entering Ireland is 100,000 in a given year
+print(kNN.predict([[100]]))
 
