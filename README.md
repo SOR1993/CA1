@@ -462,4 +462,51 @@ mean_squared_error = np.mean((predicted_population_change - y)**2)
 # Display the mean square error
 print("Mean Squared Error on test set", mean_squared_error)
 
+## Ridge Regression
+## 70-30 Split Training/Test Data
+# import the libraries for LinearRegression
+from sklearn.model_selection import train_test_split
+# Call the train_test_split method to split the data and the splitting is 70% for training and 30% for testing
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.3, random_state = 98)
+from sklearn.linear_model import Ridge
+# Initialise the object
+ridge = Ridge(alpha = 50)
+# Train the model by calling the method fit()
+model_ridge = ridge.fit(x_train, y_train)
+# Display the coefficients of the model
+model_ridge.coef_
+print("Training set score: {:.2f}".format(model_ridge.score(x_train, y_train)))
+print("Test set score: {:.2f}".format(model_ridge.score(x_test, y_test)))
+
+# 80-20 Split Training/Test Data
+# import the libraries for LinearRegression
+from sklearn.model_selection import train_test_split
+# Call the train_test_split method to split the data and the splitting is 80% for training and 20% for testing
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 98)
+from sklearn.linear_model import Ridge
+# Initialise the object
+ridge = Ridge(alpha = 50)
+# Train the model by calling the method fit()
+model_ridge = ridge.fit(x_train, y_train)
+# Display the coefficients of the model
+model_ridge.coef_
+print("Training set score: {:.2f}".format(model_ridge.score(x_train, y_train)))
+print("Test set score: {:.2f}".format(model_ridge.score(x_test, y_test)))
+
+# 60-40 Split Training/Test Data
+# import the libraries for LinearRegression
+from sklearn.model_selection import train_test_split
+# Call the train_test_split method to split the data and the splitting is 80% for training and 20% for testing
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.4, random_state = 98)
+from sklearn.linear_model import Ridge
+# Initialise the object
+ridge = Ridge(alpha = 50)
+# Train the model by calling the method fit()
+model_ridge = ridge.fit(x_train, y_train)
+# Display the coefficients of the model
+model_ridge.coef_
+print("Training set score: {:.2f}".format(model_ridge.score(x_train, y_train)))
+print("Test set score: {:.2f}".format(model_ridge.score(x_test, y_test)))
+
+
 
