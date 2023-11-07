@@ -421,6 +421,9 @@ from sklearn.linear_model import LinearRegression
 # Train the LinearRegression mode by using a method fit() function/ method
 regression = LinearRegression().fit(x_train, y_train)
 
+# Display the coefficients
+print(reg_obj.coef_)
+
 print("Training set score: {:.2f}".format(regression.score(x_train, y_train)))
 print("Test set score: {:.2f}".format(regression.score(x_test, y_test)))
 
