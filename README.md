@@ -68,12 +68,15 @@ print(IQR)
 df1 = df1[~((df1 < (Q1-1.5 * IQR)) |(df > (Q3 + 1.5 * IQR))).any(axis=1)] 
 df1.shape 
 
-## setting 'Year' as index using .set_index() function. Source:https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.set_index.html
+## setting 'Year' as index using .set_index() function. 
+## Source:https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.set_index.html
 df.set_index('Year')
 
 ## plotting data to gain insights into the data set
 sns.relplot(data=df, x="Year", y="Number of People", hue="Category", kind="line", height=8)
-plt.grid(True, color = "grey", linewidth = "1", linestyle = "-") ## Source https://www.geeksforgeeks.org/grids-in-matplotlib/
+plt.grid(True, color = "grey", linewidth = "1", linestyle = "-") 
+
+## Source https://www.geeksforgeeks.org/grids-in-matplotlib/
 plt.title("Population of Ireland 1926-2023", fontsize=14)
 plt.xlabel("Year", fontsize=12)
 plt.ylabel("Number of People (million)", fontsize=12)
@@ -117,12 +120,12 @@ print(pivot.isnull().sum())
 
 ## used the .corr() function to establish the relationship between the variables which effect population growth, the magnitude of the relationship and the action of the relationship
 pivot.corr()
-## https://sparkbyexamples.com/pandas/pandas-correlation-of-columns/#:~:text=You%20can%20also%20get%20the,()%20function%20returns%20Pearson's%20correlation.
+## Source: https://sparkbyexamples.com/pandas/pandas-correlation-of-columns/#:~:text=You%20can%20also%20get%20the,()%20function%20returns%20Pearson's%20correlation.
 
 ## dropped the other variables and just conducted a comparison vs. population to quickly identify where the strong/weak relationships existed in the data set
 pivot[pivot.columns[1:]].corr()['Population'][:].sort_values(ascending=False).to_frame()
 
-## https://stackoverflow.com/questions/39409866/correlation-heatmap
+## Source: https://stackoverflow.com/questions/39409866/correlation-heatmap
 ## used seaborn to plot a heatmap of the correlation analysis to allow me to identify key relationships in the data.
 corr = pivot.corr()
 sns.heatmap(corr, cmap="Blues", annot=True)
@@ -179,7 +182,7 @@ pivot.describe()
 
 ## dataset 2correlation analysis of the data
 pivot.corr()
-## https://seaborn.pydata.org/examples/scatterplot_matrix.html
+## Source: https://seaborn.pydata.org/examples/scatterplot_matrix.html
 sns.pairplot(pivot)
 plt.grid(True, color = "grey", linewidth = "1", linestyle = "-") ## Source https://www.geeksforgeeks.org/grids-in-matplotlib/
 plt.title("Graphs of Various Variables Effecting the Population of Ireland", fontsize=14)
@@ -559,7 +562,7 @@ for i, k in enumerate(neighbors):
     # Compute accuracy on the test set
     test_accuracy[i] = kNN.score(x_test, y_test) 
 
-    # Visualise the accuracy based on the number of neighbors
+## Visualise the accuracy based on the number of neighbors
 plt.title('kNN considering different neighbors')
 plt.plot(neighbors, test_accuracy, label = 'Testing Accuracy')
 plt.plot(neighbors, train_accuracy, label = 'Training Accuracy')
